@@ -16,3 +16,17 @@ def truncate_item_name_from_shopify(self,name):
         print('2'*100,self.item_name)
         # return self
 
+@frappe.whitelist(allow_guest=True)
+def truncate_item_name_from_shopify_for_SO(self,name):
+    for item in self.items:
+        item.item_name
+
+@frappe.whitelist(allow_guest=True)
+def kartra_simple_call():
+    print('##'*100)
+    print(frappe.local.form_dict)
+    x=frappe.local.form_dict
+    frappe.msgprint('Inside kartra_simple_call')
+    frappe.msgprint('Inside kartra_simple_call',x)
+
+
