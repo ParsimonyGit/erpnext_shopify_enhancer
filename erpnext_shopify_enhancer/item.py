@@ -11,7 +11,7 @@ def truncate_item_name_from_shopify(self,name):
     enable_shopify=frappe.db.get_single_value('Shopify Settings', 'enable_shopify')
     print('enable_shopify',enable_shopify)
     frappe.msgprint('enable_shopify',enable_shopify)
-    if enable_shopify==1:
+    if enable_shopify==1 and self.shopify_product_id:
         print('1'*100,self.item_name)
         frappe.msgprint('sync_with_shopify',self.item_name)
         self.item_name=self.item_name[0:140]
@@ -21,8 +21,10 @@ def truncate_item_name_from_shopify(self,name):
 
 @frappe.whitelist(allow_guest=True)
 def truncate_item_name_from_shopify_for_SO(self,name):
-    for item in self.items:
-        item.item_name=item.item_name[0:140]
+    enable_shopify=frappe.db.get_single_value('Shopify Settings', 'enable_shopify')
+    if  enable_shopify==1 and self.shopify_order_id:
+        for item in self.items:
+            item.item_name=item.item_name[0:140]
 
 @frappe.whitelist(allow_guest=True)
 def kartra_simple_call(**data):
