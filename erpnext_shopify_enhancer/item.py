@@ -34,7 +34,7 @@ def kartra_simple_call():
     doc = frappe.new_doc('Task')
     # doc.title = 'New Task 11'+nowdate()
     doc.subject=nowdate()
-    doc.description='1212'
+    doc.description=x
     doc.insert(ignore_permissions=True)    
     frappe.db.commit()
 
