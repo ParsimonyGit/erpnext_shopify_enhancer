@@ -26,11 +26,11 @@ def truncate_item_name_from_shopify_for_SO(self,name):
 
 @frappe.whitelist(allow_guest=True)
 def kartra_simple_call(**data):
-    print('44'*100)
+    print('55'*100)
     doc = frappe.new_doc('Task')
     doc.subject=nowdate()
-    doc.description=frappe.form_dict.get("action") or '222'
-    print('33'*100)
+    doc.description=json.dumps(frappe.form_dict.get("action_details",{}).get("transaction_details",{})) or frappe.form_dict.get("action") 
+    print('66'*100)
     print(doc.description,'-----')
     doc.insert(ignore_permissions=True)    
     frappe.db.commit()
