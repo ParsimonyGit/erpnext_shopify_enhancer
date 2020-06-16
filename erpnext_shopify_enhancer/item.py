@@ -29,7 +29,7 @@ def kartra_simple_call(**data):
     print('44'*100)
     doc = frappe.new_doc('Task')
     doc.subject=nowdate()
-    doc.description=frappe.form_dict.get("action") or '222'
+    doc.description=frappe.form_dict.get("action_details") or '222'
     print('33'*100)
     print(doc.description,'-----')
     doc.insert(ignore_permissions=True)    
