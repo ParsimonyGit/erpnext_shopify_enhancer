@@ -29,12 +29,12 @@ def kartra_simple_call():
     print('##'*100)
     print(frappe.local.form_dict)
     x=frappe.local.form_dict or 'ashish'
-    frappe.msgprint('Inside kartra_simple_call')
-    frappe.msgprint('Inside kartra_simple_call',x)
     doc = frappe.new_doc('Task')
     # doc.title = 'New Task 11'+nowdate()
     doc.subject=nowdate()
-    doc.description=x
+    doc.description=frappe.parse_json(frappe.local.form_dict)
+    print('22'*100)
+    print(doc.description)
     doc.insert(ignore_permissions=True)    
     frappe.db.commit()
 
