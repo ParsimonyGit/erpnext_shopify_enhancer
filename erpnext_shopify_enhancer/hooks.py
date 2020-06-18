@@ -81,10 +81,10 @@ app_license = "MIT"
 
 doc_events = {
 	"Item": {
-		"before_insert": "erpnext_shopify_enhancer.item.truncate_item_name_from_shopify",
+		"before_insert": "erpnext_shopify_enhancer.api.truncate_item_name_from_shopify",
 	},
 	"Sales Order": {
-		"before_insert": "erpnext_shopify_enhancer.item.truncate_item_name_from_shopify_for_SO",
+		"before_insert": "erpnext_shopify_enhancer.api.truncate_item_name_from_shopify_for_SO",
 	}	
 }
 
