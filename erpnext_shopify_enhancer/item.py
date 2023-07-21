@@ -8,7 +8,7 @@ def truncate_item_name_from_shopify(self,name):
     # print(frappe._dict(self))
     print('---'*100,self.item_name)
     frappe.msgprint('Inside truncate_item_name_from_shopify',self.item_name)
-    enable_shopify=frappe.db.get_single_value('Shopify Settings', 'enable_shopify')
+    enable_shopify=frappe.db.get_single_value('Shopify Setting', 'enable_shopify')
     print('enable_shopify',enable_shopify)
     frappe.msgprint('enable_shopify',enable_shopify)
     if enable_shopify==1 and self.shopify_product_id:
@@ -21,7 +21,7 @@ def truncate_item_name_from_shopify(self,name):
 
 @frappe.whitelist(allow_guest=True)
 def truncate_item_name_from_shopify_for_SO(self,name):
-    enable_shopify=frappe.db.get_single_value('Shopify Settings', 'enable_shopify')
+    enable_shopify=frappe.db.get_single_value('Shopify Setting', 'enable_shopify')
     if  enable_shopify==1 and self.shopify_order_id:
         for item in self.items:
             item.item_name=item.item_name[0:140]
